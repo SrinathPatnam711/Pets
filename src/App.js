@@ -25,6 +25,13 @@ function App() {
       color: 'red',
       id: 3
     },
+
+    {
+      Name: 'cat',
+      Type: 'type d',
+      color: 'blue',
+      id: 4
+    },
   ]);
 
   const handleDeletepetlist = (id) => 

@@ -1,23 +1,51 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import Pet from './components/Pet'
 
 function App() {
+  const [petlist, setPetlist] = useState([
+    {
+      Name: 'doggy',
+      Type: 'type a',
+      color: 'green',
+      id: 1
+    },
+  
+    {
+      Name: 'Trex',
+      Type: 'type b',
+      color: 'purple',
+      id: 2
+    },
+     
+    {
+      Name: 'fish',
+      Type: 'type b',
+      color: 'red',
+      id: 3
+    },
+  ]);
+
+  const handleDeletepetlist = (id) => 
+  {    
+    setPetlist((prev) => prev.filter((p) => p.id !== id));
+  };
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h3>Pets List</h3>
+      {petlist.map((p) => (
+        <Pet 
+          id = {p.id} 
+          Name={p.Name}
+          Type={p.Type}
+          Color={p.color}
+          onDelete = {handleDeletepetlist}            
+          key={p.id.toString()}     
+        />
+      ))}
     </div>
   );
 }
